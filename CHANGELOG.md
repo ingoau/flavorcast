@@ -1,3 +1,3 @@
-# FlavorCast Changelog
+# Flavorcast Changelog
 
 ## [Initial Version] - {PR_MERGE_DATE}

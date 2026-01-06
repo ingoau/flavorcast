@@ -1,3 +1,3 @@
-# FlavorCast
+# Flavorcast
 
 Flavortown for Raycast
