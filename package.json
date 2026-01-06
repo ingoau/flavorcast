@@ -3,7 +3,7 @@
   "name": "flavorcast",
   "title": "Flavorcast",
   "description": "Flavortown for Raycast",
-  "icon": "extension-icon.png",
+  "icon": "extension_icon.png",
   "author": "ingowolf",
   "platforms": [
     "macOS",
