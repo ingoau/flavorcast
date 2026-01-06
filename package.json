@@ -42,7 +42,7 @@
   "preferences": [
     {
       "type": "password",
-      "name": "api-key",
+      "name": "apikey",
       "title": "API Key",
       "required": true,
       "description": "Flavortown API Key"
