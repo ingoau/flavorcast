@@ -1,3 +1,9 @@
-export * as users from "./users";
-export * as projects from "./projects";
-export * as devlogs from "./devlogs";
+import * as users from "./users";
+import * as projects from "./projects";
+import * as devlogs from "./devlogs";
+
+export const flavortownApi = {
+  users,
+  projects,
+  devlogs,
+};
