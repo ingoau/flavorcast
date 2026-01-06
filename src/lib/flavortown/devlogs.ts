@@ -1,8 +1,8 @@
 import { API_BASE } from "../constants";
+import client from "./client";
 import { Devlog } from "./types";
 
 export async function get(projectId: number, devlogId: number) {
-  const request = await fetch(`${API_BASE}/projects/${projectId}/devlogs/${devlogId}`);
-  const json = await request.json();
-  return json as Devlog;
+  const response = await client.get<Devlog>(`${API_BASE}/projects/${projectId}/devlogs/${devlogId}`);
+  return response.data as Devlog;
 }
