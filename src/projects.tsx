@@ -1,25 +1,17 @@
-import { ActionPanel, Action, Icon, List } from "@raycast/api";
-
-const ITEMS = Array.from(Array(3).keys()).map((key) => {
-  return {
-    id: key,
-    icon: Icon.Bird,
-    title: "Title " + key,
-    subtitle: "Subtitle",
-    accessory: "Accessory",
-  };
-});
+import { ActionPanel, Action, List } from "@raycast/api";
+import { usePromise } from "@raycast/utils";
+import listUserProjects from "./lib/listUserProjects";
 
 export default function Command() {
+  const { isLoading, data } = usePromise(listUserProjects);
+
   return (
-    <List>
-      {ITEMS.map((item) => (
+    <List isLoading={isLoading}>
+      {data?.map((item) => (
         <List.Item
           key={item.id}
-          icon={item.icon}
           title={item.title}
-          subtitle={item.subtitle}
-          accessories={[{ icon: Icon.Text, text: item.accessory }]}
+          subtitle={item.description}
           actions={
             <ActionPanel>
               <Action.CopyToClipboard content={item.title} />
