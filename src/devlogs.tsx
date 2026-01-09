@@ -10,7 +10,28 @@ export default function Devlogs({ projectId }: { projectId: number }) {
   return (
     <List isLoading={isLoading} isShowingDetail>
       {data?.devlogs.map((devlog) => (
-        <List.Item key={devlog.id} title={new Date(devlog.created_at).toLocaleString()} />
+        <List.Item
+          key={devlog.id}
+          title={new Date(devlog.created_at).toLocaleString()}
+          detail={
+            <List.Item.Detail
+              markdown={`${devlog.body}`}
+              metadata={
+                <List.Item.Detail.Metadata>
+                  <List.Item.Detail.Metadata.Label
+                    title="Created At"
+                    text={new Date(devlog.created_at).toLocaleString()}
+                  />
+                  <List.Item.Detail.Metadata.Label
+                    title="Updated At"
+                    text={new Date(devlog.updated_at).toLocaleString()}
+                  />
+                  <List.Item.Detail.Metadata.Label title="Likes" text={String(devlog.likes_count)} />
+                </List.Item.Detail.Metadata>
+              }
+            />
+          }
+        />
       ))}
     </List>
   );
