@@ -21,8 +21,23 @@ export default function Command() {
                 url={`${FLAVORTOWN_BASE}/projects/${item.id}/devlogs/new`}
                 title="Create Devlog"
                 icon={Icon.Plus}
+                shortcut={Keyboard.Shortcut.Common.New}
               />
-              <Action.Push title="View Devlogs" target={<Devlogs projectId={item.id} />} icon={Icon.List} />
+              <Action.Push
+                title="View Devlogs"
+                target={<Devlogs projectId={item.id} />}
+                icon={Icon.List}
+                shortcut={{
+                  Windows: {
+                    modifiers: ["ctrl"],
+                    key: "enter",
+                  },
+                  macOS: {
+                    modifiers: ["cmd"],
+                    key: "enter",
+                  },
+                }}
+              />
               <Action.CopyToClipboard
                 content={`${FLAVORTOWN_BASE}/projects/${item.id}`}
                 title="Copy Link"
