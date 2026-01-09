@@ -2,7 +2,7 @@ import { List } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { flavortownApi } from "./lib/flavortownApi";
 
-export default function Devlogs(projectId: number) {
+export default function Devlogs({ projectId }: { projectId: number }) {
   const { isLoading, data } = usePromise(() => {
     return flavortownApi.devlogs.list(projectId);
   });
