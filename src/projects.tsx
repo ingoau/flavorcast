@@ -17,6 +17,11 @@ export default function Command() {
           actions={
             <ActionPanel>
               <Action.OpenInBrowser url={`${FLAVORTOWN_BASE}/projects/${item.id}`} />
+              <Action.OpenInBrowser
+                url={`${FLAVORTOWN_BASE}/projects/${item.id}/devlogs/new`}
+                title="Create Devlog"
+                icon={Icon.Plus}
+              />
               <Action.Push title="View Devlogs" target={<Devlogs projectId={item.id} />} icon={Icon.List} />
               <Action.CopyToClipboard
                 content={`${FLAVORTOWN_BASE}/projects/${item.id}`}
