@@ -13,7 +13,27 @@ export default function Command() {
         <List.Item
           key={item.id}
           title={item.title}
-          detail={<List.Item.Detail markdown={`# ${item.title}\n${item.description}`} />}
+          detail={
+            <List.Item.Detail
+              markdown={`# ${item.title}\n${item.description}`}
+              metadata={
+                <List.Item.Detail.Metadata>
+                  <List.Item.Detail.Metadata.Label title="Devlogs" text={String(item.devlog_ids.length)} />
+                  <List.Item.Detail.Metadata.Label
+                    title="Created At"
+                    text={new Date(item.created_at).toLocaleString()}
+                  />
+                  <List.Item.Detail.Metadata.Label
+                    title="Updated At"
+                    text={new Date(item.updated_at).toLocaleString()}
+                  />
+                  <List.Item.Detail.Metadata.Label title="Demo URL" text={String(item.demo_url)} />
+                  <List.Item.Detail.Metadata.Label title="Repo URL" text={String(item.repo_url)} />
+                  <List.Item.Detail.Metadata.Label title="Readme URL" text={String(item.readme_url)} />
+                </List.Item.Detail.Metadata>
+              }
+            />
+          }
           actions={
             <ActionPanel>
               <Action.OpenInBrowser url={`${FLAVORTOWN_BASE}/projects/${item.id}`} />
