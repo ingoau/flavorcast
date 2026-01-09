@@ -13,7 +13,7 @@ export default function Command() {
         <List.Item
           key={item.id}
           title={item.title}
-          detail={<List.Item.Detail markdown={`#${item.title}\n${item.description}`} />}
+          detail={<List.Item.Detail markdown={`# ${item.title}\n${item.description}`} />}
           actions={
             <ActionPanel>
               <Action.OpenInBrowser url={`${FLAVORTOWN_BASE}/projects/${item.id}`} />
