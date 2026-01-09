@@ -44,6 +44,9 @@ export default function Command() {
                 icon={Icon.Plus}
                 shortcut={Keyboard.Shortcut.Common.New}
               />
+              <Action.OpenInBrowser url={item.demo_url} title="Open Demo URL" icon={Icon.Globe} />
+              <Action.OpenInBrowser url={item.repo_url} title="Open Repo URL" icon={Icon.Code} />
+              <Action.OpenInBrowser url={item.readme_url} title="Open Readme URL" icon={Icon.Document} />
               <Action.CopyToClipboard
                 content={`${FLAVORTOWN_BASE}/projects/${item.id}`}
                 title="Copy Link"
