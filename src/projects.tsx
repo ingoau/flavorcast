@@ -1,4 +1,4 @@
-import { ActionPanel, Action, List } from "@raycast/api";
+import { ActionPanel, Action, List, Keyboard } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import listUserProjects from "./lib/listUserProjects";
 import { FLAVORTOWN_BASE } from "./lib/constants";
@@ -16,7 +16,11 @@ export default function Command() {
           actions={
             <ActionPanel>
               <Action.OpenInBrowser url={`${FLAVORTOWN_BASE}/projects/${item.id}`} />
-              <Action.CopyToClipboard content={item.title} />
+              <Action.CopyToClipboard
+                content={`${FLAVORTOWN_BASE}/projects/${item.id}`}
+                title="Copy Link"
+                shortcut={Keyboard.Shortcut.Common.Copy}
+              />
             </ActionPanel>
           }
         />
