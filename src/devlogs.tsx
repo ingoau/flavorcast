@@ -10,7 +10,7 @@ export default function Devlogs({ projectId }: { projectId: number }) {
   return (
     <List isLoading={isLoading} isShowingDetail>
       {data?.devlogs.map((devlog) => (
-        <List.Item key={devlog.id} title={devlog.body} subtitle={devlog.created_at} />
+        <List.Item key={devlog.id} title={new Date(devlog.created_at).toLocaleString()} />
       ))}
     </List>
   );
