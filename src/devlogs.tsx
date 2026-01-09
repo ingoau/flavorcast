@@ -1,6 +1,7 @@
-import { List } from "@raycast/api";
+import { Action, ActionPanel, Icon, Keyboard, List } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { flavortownApi } from "./lib/flavortownApi";
+import { FLAVORTOWN_BASE } from "./lib/constants";
 
 export default function Devlogs({ projectId }: { projectId: number }) {
   const { isLoading, data } = usePromise(() => {
@@ -8,11 +9,34 @@ export default function Devlogs({ projectId }: { projectId: number }) {
   });
 
   return (
-    <List isLoading={isLoading} isShowingDetail>
+    <List
+      isLoading={isLoading}
+      isShowingDetail
+      actions={
+        <ActionPanel>
+          <Action.OpenInBrowser
+            url={`${FLAVORTOWN_BASE}/projects/${projectId}/devlogs/new`}
+            title="Create Devlog"
+            icon={Icon.Plus}
+            shortcut={Keyboard.Shortcut.Common.New}
+          />
+        </ActionPanel>
+      }
+    >
       {data?.devlogs.map((devlog) => (
         <List.Item
           key={devlog.id}
           title={new Date(devlog.created_at).toLocaleString()}
+          actions={
+            <ActionPanel>
+              <Action.OpenInBrowser
+                url={`${FLAVORTOWN_BASE}/projects/${projectId}/devlogs/new`}
+                title="Create Devlog"
+                icon={Icon.Plus}
+                shortcut={Keyboard.Shortcut.Common.New}
+              />
+            </ActionPanel>
+          }
           detail={
             <List.Item.Detail
               markdown={`${devlog.body}`}
