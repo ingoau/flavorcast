@@ -27,6 +27,14 @@ export default function Devlogs({ projectId }: { projectId: number }) {
                     text={new Date(devlog.updated_at).toLocaleString()}
                   />
                   <List.Item.Detail.Metadata.Label title="Likes" text={String(devlog.likes_count)} />
+                  <List.Item.Detail.Metadata.Label
+                    title="Time Logged"
+                    text={(() => {
+                      const hours = Math.floor(devlog.duration_seconds / 3600);
+                      const minutes = Math.floor((devlog.duration_seconds % 3600) / 60);
+                      return `${hours}h ${minutes}m`;
+                    })()}
+                  />
                 </List.Item.Detail.Metadata>
               }
             />
