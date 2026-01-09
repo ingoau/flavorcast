@@ -2,6 +2,7 @@ import { ActionPanel, Action, List, Keyboard, Icon } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import listUserProjects from "./lib/listUserProjects";
 import { FLAVORTOWN_BASE } from "./lib/constants";
+import Devlogs from "./devlogs";
 
 export default function Command() {
   const { isLoading, data } = usePromise(listUserProjects);
@@ -16,7 +17,7 @@ export default function Command() {
           actions={
             <ActionPanel>
               <Action.OpenInBrowser url={`${FLAVORTOWN_BASE}/projects/${item.id}`} />
-              <Action.Push title="View Devlogs" target={<List />} icon={Icon.List} />
+              <Action.Push title="View Devlogs" target={<Devlogs projectId={item.id} />} icon={Icon.List} />
               <Action.CopyToClipboard
                 content={`${FLAVORTOWN_BASE}/projects/${item.id}`}
                 title="Copy Link"
